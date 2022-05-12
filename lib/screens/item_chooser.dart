@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sushi/constant.dart';
+import 'package:sushi/services/database.dart';
 import '../components/app_bar_item_chooser.dart';
 import '../components/food_item.dart';
 
@@ -38,6 +38,7 @@ class _ItemsGenerator extends State<ItemChooser> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        leaveRoom(groupId);
         await FirebaseAuth.instance.signOut();
         return true;
       },
