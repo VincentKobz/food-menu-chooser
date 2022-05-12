@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sushi/constant.dart';
 
 class Food extends StatelessWidget {
   const Food({
@@ -41,19 +42,28 @@ class Food extends StatelessWidget {
             style: TextStyle(fontSize: 20),
           ),
           const SizedBox(
-            width: 10,
+            width: 15,
           ),
           IconButton(
               onPressed: () {},
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-              icon: const Icon(Icons.remove_circle_outline_rounded),
+              icon: const Icon(
+                Icons.remove_circle_outline_rounded,
+                color: thirdColor,
+              ),
               iconSize: 30),
+          const SizedBox(
+            width: 5,
+          ),
           IconButton(
               onPressed: () {},
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-              icon: const Icon(Icons.add_circle_outline_rounded),
+              icon: const Icon(
+                Icons.add_circle_outline_rounded,
+                color: thirdColor,
+              ),
               iconSize: 30),
           const SizedBox(
             width: 20,

@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sushi/constant.dart';
+import '../components/app_bar_item_chooser.dart';
 import '../components/food_item.dart';
 
 class ItemChooser extends StatefulWidget {
@@ -33,30 +36,31 @@ class _ItemsGenerator extends State<ItemChooser> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Item Lists",
-                style: TextStyle(fontSize: 20),
-              ),
-              const Text(
-                "5 members",
-                style: TextStyle(fontSize: 16),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: item.length,
-                  itemBuilder: (context, index) {
-                    return Food(name: item[index]["name"]);
-                  },
+    return WillPopScope(
+      onWillPop: () async {
+        await FirebaseAuth.instance.signOut();
+        return true;
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const AppBarItemChooser(),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: item.length,
+                    itemBuilder: (context, index) {
+                      return Food(name: item[index]["name"]);
+                    },
+                  ),
                 ),
-              )
-            ],
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       ),
