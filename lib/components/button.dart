@@ -8,14 +8,16 @@ class Button extends StatelessWidget {
       required this.width,
       required this.height,
       required this.size,
-      required this.onPressed})
+      required this.onPressed,
+      required this.disabled})
       : super(key: key);
 
   final String text;
   final double width;
   final double height;
   final double size;
-  final void Function() onPressed;
+  final bool disabled;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class Button extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: thirdColor,
+          color: !disabled ? thirdColor : Colors.grey,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

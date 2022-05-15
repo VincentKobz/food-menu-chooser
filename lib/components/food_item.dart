@@ -1,13 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:sushi/constant.dart';
+import 'package:sushi/services/database.dart';
 
-class Food extends StatelessWidget {
+class Food extends StatefulWidget {
   const Food({
     Key? key,
     required this.name,
+    required this.index,
+    required this.user,
   }) : super(key: key);
 
   final String name;
+  final int index;
+  final UserConnect user;
+
+  @override
+  State<Food> createState() => _FoodState();
+}
+
+class _FoodState extends State<Food> {
+  int quantity = 0;
+  var enabled = false;
+
+  void changeText(int value) {
+    setState(() {
+      quantity += value;
+
+      if (quantity == 0) {
+        enabled = false;
+      } else {
+        enabled = true;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,31 +58,39 @@ class Food extends StatelessWidget {
             width: 20,
           ),
           Text(
-            name,
+            widget.name,
             style: const TextStyle(fontSize: 20),
           ),
           const Spacer(),
-          const Text(
-            "0",
-            style: TextStyle(fontSize: 20),
+          Text(
+            quantity.toString(),
+            style: const TextStyle(fontSize: 20),
           ),
           const SizedBox(
             width: 15,
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: enabled
+                  ? () {
+                      updateMenuQuantity(widget.user, -1, widget.index);
+                      if (quantity > 0) changeText(-1);
+                    }
+                  : null,
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-              icon: const Icon(
+              icon: Icon(
                 Icons.remove_circle_outline_rounded,
-                color: thirdColor,
+                color: enabled ? thirdColor : Colors.grey,
               ),
               iconSize: 30),
           const SizedBox(
             width: 5,
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                updateMenuQuantity(widget.user, 1, widget.index);
+                changeText(1);
+              },
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
               icon: const Icon(
