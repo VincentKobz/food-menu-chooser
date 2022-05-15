@@ -18,7 +18,7 @@ class Food extends StatefulWidget {
   State<Food> createState() => _FoodState();
 }
 
-class _FoodState extends State<Food> {
+class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
   int quantity = 0;
   var enabled = false;
 
@@ -105,4 +105,7 @@ class _FoodState extends State<Food> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

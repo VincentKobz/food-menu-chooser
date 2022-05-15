@@ -61,7 +61,9 @@ class _TotalOrderState extends State<TotalOrder> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppBarItemChooser(user: widget.user),
+            AppBarItemChooser(
+              user: widget.user,
+            ),
             const SizedBox(height: 10),
             Expanded(
               child: ListView(children: [

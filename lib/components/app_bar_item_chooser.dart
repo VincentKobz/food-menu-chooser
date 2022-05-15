@@ -116,14 +116,14 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
+            children: [
+              const Text(
                 "Item Lists",
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                "5 members",
-                style: TextStyle(fontSize: 16, color: thirdColor),
+                widget.user.groupId,
+                style: const TextStyle(fontSize: 16, color: thirdColor),
               ),
             ],
           ),

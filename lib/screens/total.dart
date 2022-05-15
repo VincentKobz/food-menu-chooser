@@ -23,7 +23,9 @@ class _TotalState extends State<Total> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppBarItemChooser(user: user),
+              AppBarItemChooser(
+                user: user,
+              ),
               const SizedBox(height: 20),
               Button(
                   disabled: false,
