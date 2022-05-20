@@ -33,7 +33,6 @@ class _UserOrderState extends State<UserOrder> {
               ]),
             ),
             const SizedBox(height: 10),
-            const SizedBox(height: 20),
           ],
         ),
       ),

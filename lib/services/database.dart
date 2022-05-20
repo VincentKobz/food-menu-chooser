@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../screens/item_chooser.dart';
+import 'package:sushi/screens/item_chooser.dart';
 
 Future<void> updateMenuQuantity(UserConnect user, int count, int index) async {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -41,20 +39,25 @@ Future<List<TotalMenuQuantity>> getTotalQuantity(UserConnect user) async {
         .where('groupId', isEqualTo: user.groupId)
         .get()
         .then(
-      (value) {
+      (value) async {
         List<dynamic> tmp = value.docs.first.data()['menuQuantity'];
         List<dynamic> users = value.docs.first.data()['users'];
-        List<dynamic> menu = value.docs.first.data()['menu'];
 
-        for (var i = 0; i < menu.length; i++) {
+        final String response =
+            await rootBundle.loadString('assets/metadata.json');
+        final data = await json.decode(response);
+        List item = data["menu"];
+
+        for (var i = 0; i < item.length; i++) {
           Map<String, int> tmpMap = {};
           int quantity = 0;
           for (var j = 0; j < tmp.length; j++) {
-            tmpMap[users[j]] = tmp[j][menu[i]];
-            quantity = (quantity + tmp[j][menu[i]]) as int;
+            tmpMap[users[j]] = tmp[j][item[i]['name']];
+            quantity = (quantity + tmp[j][item[i]['name']]) as int;
           }
           total.add(TotalMenuQuantity(
-            name: menu[i],
+            description: item[i]['description'],
+            name: item[i]['name'],
             quantity: quantity,
             menuQuantity: tmpMap,
           ));
@@ -62,7 +65,7 @@ Future<List<TotalMenuQuantity>> getTotalQuantity(UserConnect user) async {
       },
     );
   } catch (e) {
-    print(e);
+    deleteRoom(user);
   }
 
   return total;
@@ -191,10 +194,12 @@ class UserConnect {
 
 class TotalMenuQuantity {
   String name;
+  String description;
   int quantity;
   Map<String, int> menuQuantity;
 
   TotalMenuQuantity({
+    required this.description,
     required this.name,
     required this.quantity,
     required this.menuQuantity,

@@ -29,6 +29,7 @@ class _ItemsGenerator extends State<ItemChooser> {
     for (var i = 0; i < item.length; i++) {
       _pages.add(Food(
         name: item[i]['name'],
+        description: item[i]['description'],
         user: widget.user,
         index: i,
       ));

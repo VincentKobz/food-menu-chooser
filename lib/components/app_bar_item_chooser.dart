@@ -89,7 +89,7 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: MediaQuery.of(context).size.height * 0.08,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         boxShadow: [
@@ -99,7 +99,7 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
             color: Colors.grey.withOpacity(0.25),
           )
         ],
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,12 +118,12 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Item Lists",
-                style: TextStyle(fontSize: 20),
+                "Food Chooser",
+                style: TextStyle(fontSize: 18),
               ),
               Text(
                 widget.user.groupId,
-                style: const TextStyle(fontSize: 16, color: thirdColor),
+                style: const TextStyle(fontSize: 18, color: thirdColor),
               ),
             ],
           ),

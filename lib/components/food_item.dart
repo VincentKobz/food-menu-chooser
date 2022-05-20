@@ -8,10 +8,12 @@ class Food extends StatefulWidget {
     required this.name,
     required this.index,
     required this.user,
+    required this.description,
   }) : super(key: key);
 
   final String name;
   final int index;
+  final String description;
   final UserConnect user;
 
   @override
@@ -38,13 +40,13 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Theme.of(context).shadowColor,
             spreadRadius: 2,
             blurRadius: 4,
             offset: const Offset(0, 2),
@@ -59,7 +61,18 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
           ),
           Text(
             widget.name,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 18),
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+          SizedBox(
+            width: 0.4 * MediaQuery.of(context).size.width,
+            child: Text(
+              widget.description,
+              overflow: TextOverflow.visible,
+              style: const TextStyle(fontSize: 14),
+            ),
           ),
           const Spacer(),
           Text(
@@ -70,6 +83,7 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
             width: 15,
           ),
           IconButton(
+              splashColor: Colors.transparent,
               onPressed: enabled
                   ? () {
                       updateMenuQuantity(widget.user, -1, widget.index);
@@ -87,6 +101,7 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
             width: 5,
           ),
           IconButton(
+              splashColor: Colors.transparent,
               onPressed: () {
                 updateMenuQuantity(widget.user, 1, widget.index);
                 changeText(1);

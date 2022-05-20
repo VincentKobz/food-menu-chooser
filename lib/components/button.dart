@@ -30,7 +30,7 @@ class Button extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: !disabled ? thirdColor : Colors.grey,
+          color: !disabled ? Theme.of(context).primaryColor : Colors.grey,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

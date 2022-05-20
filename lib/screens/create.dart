@@ -74,10 +74,10 @@ class _CreateState extends State<Create> {
               Container(
                 width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).backgroundColor,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Theme.of(context).shadowColor,
                       spreadRadius: 2,
                       blurRadius: 4,
                       offset: const Offset(0, 2),
@@ -87,10 +87,11 @@ class _CreateState extends State<Create> {
                 ),
                 child: TextField(
                   controller: nameController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Icon(Icons.person, color: thirdColor),
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Icon(Icons.person,
+                          color: Theme.of(context).primaryColor),
                     ),
                     hintText: "Enter your name",
                     border: InputBorder.none,

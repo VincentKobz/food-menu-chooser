@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sushi/constant.dart';
 import 'package:sushi/screens/home.dart';
 import 'firebase_options.dart';
 
@@ -19,8 +20,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            brightness: Brightness.light,
+            primaryColor: thirdColor,
+            shadowColor: Colors.grey.withOpacity(0.2)),
+        darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            primaryColor: primaryColorDark,
+            shadowColor: Colors.black.withOpacity(0.2)),
+        themeMode: ThemeMode.dark,
         home: home());
   }
 }

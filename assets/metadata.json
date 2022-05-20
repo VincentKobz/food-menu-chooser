@@ -2,163 +2,216 @@
     "restaurant": "sushi spot",
     "menu" : [
         {
-            "name": "E1"
+            "name": "E1",
+            "description": "Salade de chou"
         },
         {
-            "name": "E2"
+            "name": "E2",
+            "description": "Soupe miso"
         },
         {
-            "name": "E3"
+            "name": "E3",
+            "description": "Gingembre marine"
         },
         {
-            "name": "A1"
+            "name": "A1",
+            "description": "Nouilles sautees"
         },
         {
-            "name": "A2"
+            "name": "A2",
+            "description": "Riz cantonais"
         },
         {
-            "name": "A3"
+            "name": "A3",
+            "description": "Riz nature"
         },
         {
-            "name": "A4"
+            "name": "A4",
+            "description": "Riz vinaigre"
         },
         {
-            "name": "A5"
+            "name": "A5",
+            "description": "Boeuf aux oignons sur riz nature"
         },
         {
-            "name": "A6"
+            "name": "A6",
+            "description": "Chirachi au saumon sur riz vinaigre"
         },
         {
-            "name": "A7"
+            "name": "A7",
+            "description": "Tartare saumon"
         },
         {
-            "name": "S1"
+            "name": "S1",
+            "description": "Sushi saumon"
         },
         {
-            "name": "S1A"
+            "name": "S1A",
+            "description": "Sushi avocat"
         },
         {
-            "name": "S2"
+            "name": "S2",
+            "description": "Sushi saumon cheese"
         },
         {
-            "name": "S5"
+            "name": "S5",
+            "description": "Sushi thon"
         },
         {
-            "name": "M1"
+            "name": "M1",
+            "description": "Sushi saumon"
         },
         {
-            "name": "MA"
+            "name": "MA",
+            "description": "Maki avocat"
         },
         {
-            "name": "MC"
+            "name": "MC",
+            "description": "Maki cheese"
         },
         {
-            "name": "M2"
+            "name": "M2",
+            "description": "Maki thon"
         },
         {
-            "name": "M3"
+            "name": "M3",
+            "description": "Maki thon cuit"
         },
         {
-            "name": "M7"
+            "name": "M7",
+            "description": "Maki concombre"
         },
         {
-            "name": "F1"
+            "name": "F1",
+            "description": "Flocon Maki saumon"
         },
         {
-            "name": "FA"
+            "name": "FA",
+            "description": "Flocon Maki avocat"
         },
         {
-            "name": "FC"
+            "name": "FC",
+            "description": "Flocon Maki cheese"
         },
         {
-            "name": "F2"
+            "name": "F2",
+            "description": "Flocon Maki thon"
         },
         {
-            "name": "F3"
+            "name": "F3",
+            "description": "Flocon Maki thon cuit"
         },
         {
-            "name": "T1A"
+            "name": "T1A",
+            "description": "Kebab saumon avocat"
         },
         {
-            "name": "T3A"
+            "name": "T3A",
+            "description": "Kebab thon cuit avocat"
         },
         {
-            "name": "H1A"
+            "name": "H1A",
+            "description": "Maki Frits saumon avocat"
         },
         {
-            "name": "HC"
+            "name": "HC",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "C1A"
+            "name": "C1A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "C1C"
+            "name": "C1C",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "C2A"
+            "name": "C2A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "C3A"
+            "name": "C3A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "C4A"
+            "name": "C4A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "K1A"
+            "name": "K1A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "K1C"
+            "name": "K1C",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "K2A"
+            "name": "K2A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "K3A"
+            "name": "K3A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "K4A"
+            "name": "K4A",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T1"
+            "name": "T1",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T2"
+            "name": "T2",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T3"
+            "name": "T3",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T7"
+            "name": "T7",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T10"
+            "name": "T10",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T11"
+            "name": "T11",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "T12"
+            "name": "T12",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y1"
+            "name": "Y1",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y6"
+            "name": "Y6",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y6C"
+            "name": "Y6C",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y7"
+            "name": "Y7",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y8"
+            "name": "Y8",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y9"
+            "name": "Y9",
+            "description": "Maki Frits cheese"
         },
         {
-            "name": "Y10"
+            "name": "Y10",
+            "description": "Maki Frits cheese"
         }
     ]
 }

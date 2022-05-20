@@ -34,20 +34,18 @@ class _TotalOrderState extends State<TotalOrder> {
 
     doc.snapshots().listen(
       (event) async {
+        pages.clear();
         totalMenuQuantity = (await getTotalQuantity(widget.user));
         for (var i = 0; i < totalMenuQuantity.length; i++) {
           var item = RecapItem(
+              key: UniqueKey(),
+              order: totalMenuQuantity[i].menuQuantity,
+              description: totalMenuQuantity[i].description,
               quantity: totalMenuQuantity[i].quantity,
-              name: totalMenuQuantity[i].name);
-          setState(
-            () {
-              if (pages.length == totalMenuQuantity.length) {
-                pages[i] = item;
-              } else {
-                pages.add(item);
-              }
-            },
-          );
+              name: totalMenuQuantity[i].name,
+              groupId: widget.user.groupId);
+
+          setState(() => pages.add(item));
         }
       },
       onError: (error) => print("Listen failed: $error"),
@@ -70,7 +68,7 @@ class _TotalOrderState extends State<TotalOrder> {
                 ...pages,
               ]),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
           ],
         ),
       ),

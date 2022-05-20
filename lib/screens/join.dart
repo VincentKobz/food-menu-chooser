@@ -66,9 +66,9 @@ class _JoinState extends State<Join> {
                 type: TextInputType.text,
                 nameController: nameController,
                 label: "Enter your name",
-                icon: const Icon(
+                icon: Icon(
                   Icons.person_rounded,
-                  color: thirdColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               const SizedBox(
@@ -78,9 +78,9 @@ class _JoinState extends State<Join> {
                 type: TextInputType.number,
                 nameController: groupController,
                 label: "Enter your group id",
-                icon: const Icon(
+                icon: Icon(
                   Icons.group_rounded,
-                  color: thirdColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               const SizedBox(height: 30),
