@@ -18,16 +18,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Sushi Select',
         theme: ThemeData(
-            brightness: Brightness.light,
-            primaryColor: thirdColor,
-            shadowColor: Colors.grey.withOpacity(0.2)),
+          fontFamily: 'nunito',
+          brightness: Brightness.light,
+          primaryColor: thirdColor,
+          shadowColor: Colors.grey.withOpacity(0.2),
+          backgroundColor: Colors.white,
+        ),
         darkTheme: ThemeData(
             brightness: Brightness.dark,
             primaryColor: primaryColorDark,
             shadowColor: Colors.black.withOpacity(0.2)),
-        themeMode: ThemeMode.dark,
         home: home());
   }
 }

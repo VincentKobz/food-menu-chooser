@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constant.dart';
 
 class Button extends StatelessWidget {
   const Button(
@@ -30,7 +29,9 @@ class Button extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: !disabled ? Theme.of(context).primaryColor : Colors.grey,
+          color: !disabled
+              ? Theme.of(context).primaryColor
+              : Theme.of(context).disabledColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -85,8 +85,9 @@ class _JoinState extends State<Join> {
               ),
               const SizedBox(height: 30),
               Button(
-                disabled:
-                    groupController.text.isEmpty || nameController.text.isEmpty,
+                disabled: groupController.text.isEmpty ||
+                    nameController.text.isEmpty ||
+                    groupController.text.length != 6,
                 width: 160,
                 height: 50,
                 size: 18,

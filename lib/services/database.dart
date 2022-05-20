@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sushi/components/alert.dart';
 import 'package:sushi/screens/item_chooser.dart';
 
 Future<void> updateMenuQuantity(UserConnect user, int count, int index) async {
@@ -93,6 +94,15 @@ void joinRoom(String groupId, userId, user, context) async {
       .then((value) {
     if (value.docs.isNotEmpty) {
       List<dynamic> menu = value.docs.first.data()['menuQuantity'];
+      List<dynamic> users = value.docs.first.data()['users'];
+
+      for (var i = 0; i < users.length; i++) {
+        if (users[i] == user.name) {
+          showAlertDialogDuplicateUser(context);
+          return null;
+        }
+      }
+
       menu.add(user.menuQuantity);
       _firestore.collection('group').doc(value.docs.first.id).update({
         'users': FieldValue.arrayUnion([userId]),
@@ -102,9 +112,8 @@ void joinRoom(String groupId, userId, user, context) async {
         context,
         MaterialPageRoute(builder: (context) => ItemChooser(user: user)),
       );
-      return true;
     } else {
-      return false;
+      showAlertDialogGroupID(context);
     }
   });
 }
@@ -121,14 +130,6 @@ void leaveRoom(UserConnect user) async {
     if (value.docs.isNotEmpty) {
       // Update menuQuantity and users lits
       List<dynamic> users = value.docs.first.data()['users'];
-      /*List<dynamic> menuQuantity = value.docs.first.data()['menuQuantity'];
-      menuQuantity.removeAt(users.indexOf(user.name));
-      _firestore.collection('group').doc(value.docs.first.id).update({
-        'users': FieldValue.arrayRemove([user.name]),
-        'menuQuantity': menuQuantity
-      });*/
-
-      // Delete collection from firebase if no user
       if (users.length == 1) {
         _firestore.collection('group').doc(value.docs.first.id).delete();
       }
@@ -170,16 +171,12 @@ createGroup(String groupId, userId) async {
   }
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  _firestore
-      .collection('group')
-      .add({
-        'groupId': groupId,
-        'users': members,
-        'menu': menu,
-        'menuQuantity': menuQuantity
-      })
-      .then((value) => null)
-      .catchError((error) => print(error));
+  _firestore.collection('group').add({
+    'groupId': groupId,
+    'users': members,
+    'menu': menu,
+    'menuQuantity': menuQuantity
+  });
 }
 
 class UserConnect {

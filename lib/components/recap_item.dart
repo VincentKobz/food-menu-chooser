@@ -81,6 +81,11 @@ class _IsExpandState extends State<IsExpand> {
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     loadWidget();
   }
 
@@ -96,11 +101,11 @@ class _IsExpandState extends State<IsExpand> {
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 height: 30,
                 decoration: BoxDecoration(
-                  color: thirdColor,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Theme.of(context).shadowColor,
                       spreadRadius: 2,
                       blurRadius: 4,
                       offset: const Offset(0, 2),

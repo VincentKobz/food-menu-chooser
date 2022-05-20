@@ -25,15 +25,17 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
   var enabled = false;
 
   void changeText(int value) {
-    setState(() {
-      quantity += value;
+    setState(
+      () {
+        quantity += value;
 
-      if (quantity == 0) {
-        enabled = false;
-      } else {
-        enabled = true;
-      }
-    });
+        if (quantity == 0) {
+          enabled = false;
+        } else {
+          enabled = true;
+        }
+      },
+    );
   }
 
   @override
@@ -94,7 +96,7 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
               constraints: const BoxConstraints(),
               icon: Icon(
                 Icons.remove_circle_outline_rounded,
-                color: enabled ? thirdColor : Colors.grey,
+                color: enabled ? Theme.of(context).primaryColor : Colors.grey,
               ),
               iconSize: 30),
           const SizedBox(
@@ -108,9 +110,9 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
               },
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-              icon: const Icon(
+              icon: Icon(
                 Icons.add_circle_outline_rounded,
-                color: thirdColor,
+                color: Theme.of(context).primaryColor,
               ),
               iconSize: 30),
           const SizedBox(

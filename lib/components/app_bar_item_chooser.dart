@@ -96,7 +96,7 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
           BoxShadow(
             blurRadius: 20,
             offset: const Offset(0, 4),
-            color: Colors.grey.withOpacity(0.25),
+            color: Theme.of(context).shadowColor,
           )
         ],
         color: Theme.of(context).backgroundColor,
@@ -107,9 +107,9 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
           Padding(
             padding: const EdgeInsets.only(left: 30),
             child: InkWell(
-              child: const Icon(
+              child: Icon(
                 Icons.delete_rounded,
-                color: thirdColor,
+                color: Theme.of(context).primaryColor,
               ),
               onTap: () => _showMyDialogDelete(),
             ),
@@ -123,7 +123,8 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
               ),
               Text(
                 widget.user.groupId,
-                style: const TextStyle(fontSize: 18, color: thirdColor),
+                style: TextStyle(
+                    fontSize: 18, color: Theme.of(context).primaryColor),
               ),
             ],
           ),
@@ -131,9 +132,9 @@ class _AppBarItemChooserState extends State<AppBarItemChooser> {
             padding: const EdgeInsets.only(right: 30),
             child: InkWell(
               onTap: () => _showMyDialogLeave(),
-              child: const Icon(
+              child: Icon(
                 Icons.exit_to_app_rounded,
-                color: thirdColor,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),

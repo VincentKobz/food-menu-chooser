@@ -28,9 +28,11 @@ class _UserOrderState extends State<UserOrder> {
             AppBarItemChooser(user: widget.widget.user),
             const SizedBox(height: 10),
             Expanded(
-              child: ListView(children: [
-                ...widget._pages,
-              ]),
+              child: ListView(
+                children: [
+                  ...widget._pages,
+                ],
+              ),
             ),
             const SizedBox(height: 10),
           ],
