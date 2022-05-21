@@ -119,99 +119,99 @@
         },
         {
             "name": "C1A",
-            "description": "Maki Frits cheese"
+            "description": "California Roll saumon avocat"
         },
         {
             "name": "C1C",
-            "description": "Maki Frits cheese"
+            "description": "California Roll saumon cheese"
         },
         {
             "name": "C2A",
-            "description": "Maki Frits cheese"
+            "description": "California Roll thon avocat"
         },
         {
             "name": "C3A",
-            "description": "Maki Frits cheese"
+            "description": "California Roll thon cuit avocat"
         },
         {
             "name": "C4A",
-            "description": "Maki Frits cheese"
+            "description": "California Roll surimi avocat"
         },
         {
             "name": "K1A",
-            "description": "Maki Frits cheese"
+            "description": "Crousti Roll saumon avocat"
         },
         {
             "name": "K1C",
-            "description": "Maki Frits cheese"
+            "description": "Crousti Roll saumon cheese"
         },
         {
             "name": "K2A",
-            "description": "Maki Frits cheese"
+            "description": "Crousti Roll thon avocat"
         },
         {
             "name": "K3A",
-            "description": "Maki Frits cheese"
+            "description": "Crousti Roll thon cuit avocat"
         },
         {
             "name": "K4A",
-            "description": "Maki Frits cheese"
+            "description": "Crousti Roll surimi avocat"
         },
         {
             "name": "T1",
-            "description": "Maki Frits cheese"
+            "description": "Beignets au saumon"
         },
         {
             "name": "T2",
-            "description": "Maki Frits cheese"
+            "description": "Gyoza au poulet"
         },
         {
             "name": "T3",
-            "description": "Maki Frits cheese"
+            "description": "Nem au poulet"
         },
         {
             "name": "T7",
-            "description": "Maki Frits cheese"
+            "description": "Poulet croustillant"
         },
         {
             "name": "T10",
-            "description": "Maki Frits cheese"
+            "description": "Courgette (wtf)"
         },
         {
             "name": "T11",
-            "description": "Maki Frits cheese"
+            "description": "Potatoes aux 5 parfums"
         },
         {
             "name": "T12",
-            "description": "Maki Frits cheese"
+            "description": "Aubergine (wtf)"
         },
         {
             "name": "Y1",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori saumon"
         },
         {
             "name": "Y6",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori boeuf"
         },
         {
             "name": "Y6C",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori boeuf au fromage"
         },
         {
             "name": "Y7",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori poulet"
         },
         {
             "name": "Y8",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori ailes de poulet"
         },
         {
             "name": "Y9",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori boulettes de poulet"
         },
         {
             "name": "Y10",
-            "description": "Maki Frits cheese"
+            "description": "Yakitori champignon (wtf)"
         }
     ]
 }
