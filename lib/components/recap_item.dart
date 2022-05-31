@@ -1,6 +1,5 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:sushi/constant.dart';
 
 class RecapItem extends StatefulWidget {
   const RecapItem({
@@ -28,26 +27,12 @@ class _RecapItemState extends State<RecapItem> {
     return ExpandableNotifier(
       child: Column(
         children: [
-          Expandable(
-            collapsed: ExpandableButton(
-              child: NotExpand(
-                  name: widget.name,
-                  description: widget.description,
-                  quantity: widget.quantity),
-            ),
-            expanded: Column(
-              children: [
-                ExpandableButton(
-                  child: IsExpand(
-                    name: widget.name,
-                    description: widget.description,
-                    quantity: widget.quantity,
-                    order: widget.order,
-                    groupId: widget.groupId,
-                  ),
-                ),
-              ],
-            ),
+          IsExpand(
+            name: widget.name,
+            description: widget.description,
+            quantity: widget.quantity,
+            order: widget.order,
+            groupId: widget.groupId,
           ),
         ],
       ),
@@ -136,7 +121,7 @@ class _IsExpandState extends State<IsExpand> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 95,
+      height: 90,
       margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,

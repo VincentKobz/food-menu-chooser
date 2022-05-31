@@ -1,5 +1,63 @@
 {
     "restaurant": "sushi spot",
+    "total_sort" : [
+        "E1",
+        "E2",
+        "E3",
+        "A3",
+        "A6",
+        "A7",
+        "Y1",
+        "Y6",
+        "Y6C",
+        "Y7",
+        "Y8",
+        "Y9",
+        "Y10",
+        "T1",
+        "T2",
+        "T3",
+        "T7",
+        "T10",
+        "T11",
+        "T12",
+        "H1A",
+        "A1",
+        "A2",
+        "A5",
+        "A4",
+        "S1",
+        "S1A",
+        "S1C",
+        "S2",
+        "S5",
+        "R1A",
+        "R4A",
+        "M1",
+        "MA",
+        "MC",
+        "M2",
+        "M3",
+        "M7",
+        "F1",
+        "FA",
+        "FC",
+        "F2",
+        "F3",
+        "T1A",
+        "T3A",
+        "C1A",
+        "C1C",
+        "C2A",
+        "C3A",
+        "C4A",
+        "K1A",
+        "K1C",
+        "K2A",
+        "K3A",
+        "K4A",
+        "HC"
+    ],
     "menu" : [
         {
             "name": "E1",
@@ -48,6 +106,10 @@
         {
             "name": "S1A",
             "description": "Sushi avocat"
+        },
+        {
+            "name": "S1C",
+            "description": "Sushi saumon cheese"
         },
         {
             "name": "S2",
@@ -100,6 +162,14 @@
         {
             "name": "F3",
             "description": "Flocon Maki thon cuit"
+        },
+        {
+            "name": "R1A",
+            "description": "Spring roll saumon avocat"
+        },
+        {
+            "name": "R4A",
+            "description": "Spring roll surimi avocat"
         },
         {
             "name": "T1A",

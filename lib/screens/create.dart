@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sushi/constant.dart';
 import '../components/button.dart';
 import '../services/database.dart';
-import 'item_chooser.dart';
+import 'menu_chooser.dart';
 
 class Create extends StatefulWidget {
   const Create({Key? key}) : super(key: key);

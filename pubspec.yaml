@@ -42,6 +42,7 @@ dependencies:
     git:
       url: https://github.com/Davenchy/flutter_launcher_icons.git
       ref: fixMinSdkParseFlutter2.8
+  rename: ^2.0.1
 
 
 
@@ -81,6 +82,7 @@ flutter:
      - assets/images/
      - assets/metadata.json
      - assets/icons/icon_sushi.png
+     - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

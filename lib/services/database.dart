@@ -4,73 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sushi/components/alert.dart';
-import 'package:sushi/screens/item_chooser.dart';
-
-Future<void> updateMenuQuantity(UserConnect user, int count, int index) async {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  await _firestore
-      .collection('group')
-      .where('groupId', isEqualTo: user.groupId)
-      .get()
-      .then((value) {
-    var key = user.menuQuantity.keys.elementAt(index);
-    user.menuQuantity[key] = count + user.menuQuantity[key]!;
-
-    if (user.menuQuantity[key]! < 0) {
-      user.menuQuantity[key] = 0;
-    }
-
-    List<dynamic> tmp = value.docs.first.data()['menuQuantity'];
-    List<dynamic> users = value.docs.first.data()['users'];
-    tmp[users.indexOf(user.name)] = user.menuQuantity;
-    _firestore
-        .collection('group')
-        .doc(value.docs.first.id)
-        .update({'menuQuantity': tmp});
-  });
-}
-
-Future<List<TotalMenuQuantity>> getTotalQuantity(UserConnect user) async {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  List<TotalMenuQuantity> total = [];
-
-  try {
-    await _firestore
-        .collection('group')
-        .where('groupId', isEqualTo: user.groupId)
-        .get()
-        .then(
-      (value) async {
-        List<dynamic> tmp = value.docs.first.data()['menuQuantity'];
-        List<dynamic> users = value.docs.first.data()['users'];
-
-        final String response =
-            await rootBundle.loadString('assets/metadata.json');
-        final data = await json.decode(response);
-        List item = data["menu"];
-
-        for (var i = 0; i < item.length; i++) {
-          Map<String, int> tmpMap = {};
-          int quantity = 0;
-          for (var j = 0; j < tmp.length; j++) {
-            tmpMap[users[j]] = tmp[j][item[i]['name']];
-            quantity = (quantity + tmp[j][item[i]['name']]) as int;
-          }
-          total.add(TotalMenuQuantity(
-            description: item[i]['description'],
-            name: item[i]['name'],
-            quantity: quantity,
-            menuQuantity: tmpMap,
-          ));
-        }
-      },
-    );
-  } catch (e) {
-    deleteRoom(user);
-  }
-
-  return total;
-}
+import 'package:sushi/screens/menu_chooser.dart';
 
 void deleteRoom(UserConnect user) async {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -158,25 +92,91 @@ Map<String, int> getMenuQuantity() {
 }
 
 createGroup(String groupId, userId) async {
-  List<String> members = [];
-  members.add(userId);
   var items = await getItem();
   List<dynamic> tmp = items["menu"];
   List<String> menu = [];
-  List<Map<String, int>> menuQuantity = [{}];
+  Map<String, int> menuQuantity = {};
 
   for (var i = 0; i < tmp.length; i++) {
     menu.add(tmp[i]["name"]);
-    menuQuantity[0][tmp[i]["name"]] = 0;
+    menuQuantity[tmp[i]["name"]] = 0;
   }
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  _firestore.collection('group').add({
-    'groupId': groupId,
-    'users': members,
+  _firestore.collection('group').doc(groupId).set({
     'menu': menu,
-    'menuQuantity': menuQuantity
   });
+
+  _firestore
+      .collection('group')
+      .doc(groupId)
+      .collection("users")
+      .doc(userId)
+      .set({'menuQuantity': menuQuantity});
+}
+
+Future<List<TotalMenuQuantity>> getTotalQuantity(UserConnect user) async {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  List<TotalMenuQuantity> total = [];
+
+  try {
+    await _firestore
+        .collection('group')
+        .doc(user.groupId)
+        .get()
+        .then((value) async {
+      final String response =
+          await rootBundle.loadString('assets/metadata.json');
+      final data = await json.decode(response);
+      List item = data['menu'];
+      List sort = data['total_sort'];
+
+      for (int i = 0; i < item.length; i++) {
+        var index = item.indexWhere((element) => element['name'] == sort[i]);
+        total.add(TotalMenuQuantity(
+            description: item[index]['description'],
+            name: item[index]['name'],
+            quantity: 0,
+            menuQuantity: {}));
+      }
+    });
+
+    await _firestore
+        .collection('group')
+        .doc(user.groupId)
+        .collection("users")
+        .get()
+        .then((value) {
+      for (int i = 0; i < value.docs.length; i++) {
+        Map<dynamic, dynamic> tmp = value.docs[i].data()['menuQuantity'];
+        for (int j = 0; j < total.length; j++) {
+          total[j].menuQuantity[value.docs[i].id] = tmp[total[j].name] as int;
+          total[j].quantity += tmp[total[j].name] as int;
+        }
+      }
+    });
+  } catch (e) {
+    deleteRoom(user);
+  }
+  return total;
+}
+
+Future<void> updateMenuQuantity(UserConnect user, int count, int index) async {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  var key = user.menuQuantity.keys.elementAt(index);
+  user.menuQuantity[key] = count + user.menuQuantity[key]!;
+
+  // check if negative
+  if (user.menuQuantity[key]! < 0) {
+    user.menuQuantity[key] = 0;
+  }
+
+  _firestore
+      .collection('group')
+      .doc(user.groupId)
+      .collection("users")
+      .doc(user.name)
+      .update({'menuQuantity': user.menuQuantity});
 }
 
 class UserConnect {

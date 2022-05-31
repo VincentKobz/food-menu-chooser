@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:sushi/components/food_item.dart';
 import 'package:sushi/components/total_order.dart';
 import 'package:sushi/components/user_order.dart';
-import 'package:sushi/constant.dart';
 import 'package:sushi/services/database.dart';
 
 class ItemChooser extends StatefulWidget {

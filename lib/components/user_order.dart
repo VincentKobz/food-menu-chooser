@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sushi/components/app_bar_item_chooser.dart';
-import 'package:sushi/screens/item_chooser.dart';
+import 'package:sushi/screens/menu_chooser.dart';
 
 class UserOrder extends StatefulWidget {
   const UserOrder({

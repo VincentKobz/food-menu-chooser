@@ -88,8 +88,10 @@ class _FoodState extends State<Food> with AutomaticKeepAliveClientMixin {
               splashColor: Colors.transparent,
               onPressed: enabled
                   ? () {
+                      print("1");
                       updateMenuQuantity(widget.user, -1, widget.index);
                       if (quantity > 0) changeText(-1);
+                      print("2");
                     }
                   : null,
               padding: EdgeInsets.zero,

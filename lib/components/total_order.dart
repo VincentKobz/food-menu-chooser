@@ -30,12 +30,13 @@ class _TotalOrderState extends State<TotalOrder> {
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
     final doc = _firestore
         .collection('group')
-        .where('groupId', isEqualTo: widget.user.groupId);
+        .doc(widget.user.groupId)
+        .collection("users");
 
     doc.snapshots().listen(
       (event) async {
-        pages.clear();
-        totalMenuQuantity = (await getTotalQuantity(widget.user));
+        setState(() => pages.clear());
+        totalMenuQuantity = await getTotalQuantity(widget.user);
         for (var i = 0; i < totalMenuQuantity.length; i++) {
           var item = RecapItem(
               key: UniqueKey(),
@@ -45,8 +46,11 @@ class _TotalOrderState extends State<TotalOrder> {
               name: totalMenuQuantity[i].name,
               groupId: widget.user.groupId);
 
-          setState(() => pages.add(item));
+          if (totalMenuQuantity[i].quantity > 0) {
+            pages.add(item);
+          }
         }
+        setState(() {});
       },
       onError: (error) => print("Listen failed: $error"),
     );
